@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>DXC Technology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="static/assets/css/styles.min.css">
+</head>
+
+<body>
+    <div>
+        <header>
+            <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white transparency border-bottom border-light" id="transmenu">
+                <div class="container"><a class="navbar-brand text-success" href="#header"></a><button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div
+                        class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item" role="presentation"><a class="nav-link active invisible" href="#">Repositorios</a></li>
+                        </ul>
+                </div>
+    </div>
+    </nav>
+    <div class="d-flex align-items-center" style="height:100vh;background-color:#000000;font-family:Roboto, sans-serif;color:rgb(255,255,255);">
+        <div class="text-center w-100 text-white">
+            <h1></h1>
+            <h2 class="font-weight-normal"><em>IDC</em></h2>
+        </div>
+    </div>
+    </header>
+        <section class="py-5">
+            <h3 align="center">Informacion de repositorios en servidor SVN.</h3>
+        <div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title" align="center">Repositorios activos</h5>
+                                                        <h2 class="card-title" align="center">{{ total_repos[0] }}</h2>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title" align="center">Sloc Totales</h5>
+                                                        <h2 class="card-title" align="center">100000</h2>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title" align="center">Repositorios propietario</h5>
+                                                        <h2 class="card-title" align="center">{{ count.Desarrollo }}</h2>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title" align="center">Repositorios cerrados</h5>
+                                                        <h2 class="card-title" align="center">{{ count.Cerrado }}</h2>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                            <canvas id="SLOCLanguages" height="60"></canvas>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="py-5">
+        <div>
+            <h3 align="center">Ultimas actualizaciones linea base.</h3>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-body">
+                                    <div class="media" style="overflow:visible;">
+                                        <div></div>
+                                        <div class="media-body" style="overflow:visible;">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <!--<h5>Repositorio: &lt;&lt;Nombre_repositorio_actualizado&gt;&gt; - Usuario: &lt;&lt;user_commit&gt;&gt;&nbsp;</h5>
+                                                    <p>Comentario de actualización: &lt;&lt;Mensaje_commit&gt;&gt;<br>
+                                                    <small class="text-muted">&lt;&lt;fecha_y_hora_commi&gt;&gt;</small></p>-->
+                                                    <p>Al 11-10-2018 no se registran actualizaciones en las lineas bases.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="static/assets/js/script.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+    <script>
+        var ctx = document.getElementById("SLOCLanguages");
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                  labels: ["ASP", "Bash", "C#","C_CPP", "CSS", "DOS_Batch", "HTML", "Java", "javaScript", "MakeFile", "Perl", "PHP", "Python", "SQL", "Visual_Basic", "XML"],
+                  datasets: [{
+                    data: [40367, 4757, 79553, 20786, 1382819, 337, 504558, 9210, 1418154, 519, 134, 956132, 842, 61661, 119287, 614656],
+                    backgroundColor:["#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"]
+                  }]
+                  },
+            options: {
+                   title: {
+                       display: true,
+                       text: 'Sloc lenguajes de programación',
+                       fontSize: 20,
+                       fontStyle: 'bold',
+                       fontColor: 'black'
+                           },
+                   legend:{
+                       display: false
+                   },
+                   scales: {
+                        yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                                }
+                                }],
+                        xAxes:[{
+                            gridLines: {
+                                display:false
+                                        }
+                              }]
+                            }
+                    }
+        });
+</script>
+</body>
+
+</html>
