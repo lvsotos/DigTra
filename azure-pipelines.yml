@@ -9,7 +9,7 @@ trigger:
 pool: default
 
 steps:
-- script: echo Hello, world!
+- script: sourceanalyzer --version
   displayName: 'Run a one-line script'
 
 - script: |
