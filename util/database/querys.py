@@ -3,6 +3,7 @@
 import logging
 from util import Basics
 from util.database.connection import MysqlConn
+from mysql.connector import Error
 
 class DBQuerys:
 
@@ -40,6 +41,8 @@ class DBQuerys:
 
         except Exception as ex:
             logging.info(ex)
+        except IOError as ex1:
+            logging.info(ex1)
         finally:
             cursor.close()
             cnx.close()
